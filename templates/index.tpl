@@ -48,7 +48,9 @@
           <a href="#hosted-files" class="color-inherit text-decoration-none hover-underline">Hosted Files</a>
         </h2>
 <div id="hosted-files-section">
-  <input class="search" placeholder="Search Name Text" />
+  <input class="search" placeholder="Search Text" />
+  <button class="sort;display:none" data-sort="download">
+  </button>
   <button class="sort" data-sort="name">
     Sort by name
   </button>
@@ -62,13 +64,15 @@
     <!-- IMPORTANT, class="list" have to be at tbody -->
     <tbody class="list">
       <tr>
+        <th>Download Link</th>
         <th>Name</th>
         <th>Section</th>
         <th>Type</th>
       </tr>
       {% for file in files %}
       <tr>
-        <td class="name"><a href="{{ file.link }}">{{ file.name }}</a></td>
+        <td class="download"><a href="{{ file.link }}">Download</a></td>
+        <td class="name">{{ file.name }}</td>
         <td class="section">{{ file.section }}</td>
         <td class="type">{{ file.type }}</td>
       </tr>
@@ -87,7 +91,7 @@
   <script src="js/list.js"></script>
   <script>
     var options = {
-    valueNames: [ 'name', 'section', 'type' ]
+    valueNames: [ 'download', 'name', 'section', 'type' ]
     };
 
     var userList = new List('hosted-files-section', options);

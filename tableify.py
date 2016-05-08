@@ -37,5 +37,5 @@ for item in os.listdir('hosted_files'):
 
 template = Template(open('templates/index.tpl').read())
 
-with open('../index.html', 'w+') as f:
+with open('index.html', 'w+') as f:
     f.write(template.render(files=files))
