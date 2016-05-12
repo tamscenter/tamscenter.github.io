@@ -2,6 +2,8 @@ import os
 
 from jinja2 import Template
 
+import xlrd
+
 files = []
 
 for item in os.listdir('hosted_files'):
@@ -34,6 +36,15 @@ for item in os.listdir('hosted_files'):
                 base['link'] = 'hosted_files/{}/{}'.format(item,subitem)
                 if 'DS_Store' not in extension:
                     files.append(base)
+
+info = []
+"""
+reference = 'hosted_files/DataManagementLibrary_ORCA_DataEntrySpreadsheet.xlsx'
+xl_workbook = xlrd.open_workbook(reference)
+sheet_names = xl_workbook.sheet_names()
+"""
+#https://blogs.harvard.edu/rprasad/2014/06/16/reading-excel-with-python-xlrd/
+#print sheet_names
 
 template = Template(open('templates/index.tpl').read())
 

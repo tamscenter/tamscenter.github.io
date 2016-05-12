@@ -10,12 +10,12 @@
     <link href="css/list-css.css" rel="stylesheet">
     <link href="css/basscss.8.0.1.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="height:3000px">
     <div class="">
       <div class="px3 lg-px4">
       <!--This is where your title section goes!-->
-      <header class="py4">
-        <div class="flex flex-wrap items-center mt4">
+      <header>
+        <div class="flex flex-wrap items-center">
           <div class="">
             <h1 class="m0">TAMS Center Data Tools</h1>
             <p class="h3 mt1 mb1">Tribal Air Monitoring Tools and Procedures</p>
@@ -26,30 +26,16 @@
             </div>
           </div>
       </header>
-      <nav id="nav" class="pl2 my2 border-left border-thick border-darken" style="max-width:768px;">
-        <div class="mxn2 flex flex-wrap">
-          <div class="px2 col-6 sm-col-4 md-col-3">
-            <a href="#getting-started" class="h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline">Getting Started</a>
-          </div>
-          <div class="px2 col-6 sm-col-4 md-col-3  "><a href="#hosted-files" class="h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline">Hosted Files</a>
-          </div>
-        </div>
-      </nav>
-      <section id="getting-started" class="py4">
-        <h2 class="h1">
-          <a href="#getting-started" class="color-inherit text-decoration-none hover-underline">Getting Started</a>
-        </h2>
-        <p class="h1">Hello you.</p></br>
-        <p class="h3">there will soon be more here.</p>
-      </section>
 
-      <section id="hosted-files" class="py4">
+      <section id="hosted-files" class="py2">
                 <h2 class="h1">
-          <a href="#hosted-files" class="color-inherit text-decoration-none hover-underline">Hosted Files</a>
+          <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Hosted Files</a>
         </h2>
-<div id="hosted-files-section">
+<div id="files">
   <input class="search" placeholder="Search Text" />
-  <button class="sort;display:none" data-sort="download">
+  <!---
+  <button class="sort" data-sort="download">
+    Sort by download
   </button>
   <button class="sort" data-sort="name">
     Sort by name
@@ -60,305 +46,306 @@
   <button class="sort" data-sort="type">
     Sort by type
   </button>
+  --->
   <table>
     <!-- IMPORTANT, class="list" have to be at tbody -->
+    <thead>
+      <th >Download Link</th>
+      <th class="sort" data-sort="name">Name</th>
+      <th class="sort" data-sort="section">Section</th>
+      <th class="sort" data-sort="type">Type</th>
+    </thead>
     <tbody class="list">
-      <tr>
-        <th>Download Link</th>
-        <th>Name</th>
-        <th>Section</th>
-        <th>Type</th>
-      </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Admin_and_Tools/Ex_DM_Flowchart.pdf">Download</a></td>
+        <td ><a href="hosted_files/Admin_and_Tools/Ex_DM_Flowchart.pdf">Download</a></td>
         <td class="name">Ex DM Flowchart</td>
         <td class="section">Admin and Tools</td>
         <td class="type">pdf</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Admin_and_Tools/Ex_DM_Flowchart.xlsx">Download</a></td>
+        <td ><a href="hosted_files/Admin_and_Tools/Ex_DM_Flowchart.xlsx">Download</a></td>
         <td class="name">Ex DM Flowchart</td>
         <td class="section">Admin and Tools</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/DataManagementLibrary_ORCA_DataEntrySpreadsheet.xlsx">Download</a></td>
+        <td ><a href="hosted_files/DataManagementLibrary_ORCA_DataEntrySpreadsheet.xlsx">Download</a></td>
         <td class="name">DataManagementLibrary ORCA DataEntrySpreadsheet</td>
         <td class="section">Top Level</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Equipment/Ex_MaintenanceCalibrationCertificationFirmwareSchedulesRev5.docx">Download</a></td>
+        <td ><a href="hosted_files/Equipment/Ex_MaintenanceCalibrationCertificationFirmwareSchedulesRev5.docx">Download</a></td>
         <td class="name">Ex MaintenanceCalibrationCertificationFirmwareSchedulesRev5</td>
         <td class="section">Equipment</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Equipment/Ex_StationOperationLogbookEntriesGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Equipment/Ex_StationOperationLogbookEntriesGuide.docx">Download</a></td>
         <td class="name">Ex StationOperationLogbookEntriesGuide</td>
         <td class="section">Equipment</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ-AmprobeCO_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ-AmprobeCO_QSGuide.docx">Download</a></td>
         <td class="name">IAQ-AmprobeCO QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_EXTECH-RH300_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_EXTECH-RH300_QSGuide.docx">Download</a></td>
         <td class="name">IAQ EXTECH-RH300 QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_Fluke922Micromanometer_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_Fluke922Micromanometer_QSGuide.docx">Download</a></td>
         <td class="name">IAQ Fluke922Micromanometer QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_FlukeThermalImagerTIR105_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_FlukeThermalImagerTIR105_QSGuide.docx">Download</a></td>
         <td class="name">IAQ FlukeThermalImagerTIR105 QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_FlukeThermalImagerTIR105_QSGuide_000.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_FlukeThermalImagerTIR105_QSGuide_000.docx">Download</a></td>
         <td class="name">IAQ FlukeThermalImagerTIR105 QSGuide 000</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide.docx">Download</a></td>
         <td class="name">IAQ J-Lite QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide_000.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide_000.docx">Download</a></td>
         <td class="name">IAQ J-Lite QSGuide 000</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide_001.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_J-Lite_QSGuide_001.docx">Download</a></td>
         <td class="name">IAQ J-Lite QSGuide 001</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_TramexMoisture_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_TramexMoisture_QSGuide.docx">Download</a></td>
         <td class="name">IAQ TramexMoisture QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide.docx">Download</a></td>
         <td class="name">IAQ TSIModel7515 CO2 QSGuide</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide_000.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide_000.docx">Download</a></td>
         <td class="name">IAQ TSIModel7515 CO2 QSGuide 000</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide_001.docx">Download</a></td>
+        <td ><a href="hosted_files/Indoor_Air/IAQ_TSIModel7515_CO2_QSGuide_001.docx">Download</a></td>
         <td class="name">IAQ TSIModel7515 CO2 QSGuide 001</td>
         <td class="section">Indoor Air</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Met_QC.xlsx">Download</a></td>
+        <td ><a href="hosted_files/Met_QC.xlsx">Download</a></td>
         <td class="name">Met QC</td>
         <td class="section">Top Level</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Calibration_PM10_BAM-1020.xls">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Calibration_PM10_BAM-1020.xls">Download</a></td>
         <td class="name">Ex Calibration PM10 BAM-1020</td>
         <td class="section">QAQC</td>
         <td class="type">xls</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Gas_PM10_PM25_NCore_Multipoint_Calibration.xls">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Gas_PM10_PM25_NCore_Multipoint_Calibration.xls">Download</a></td>
         <td class="name">Ex Gas PM10 PM25 NCore Multipoint Calibration</td>
         <td class="section">QAQC</td>
         <td class="type">xls</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Gaseous_NCore_Multipoint_Calibration.xls">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Gaseous_NCore_Multipoint_Calibration.xls">Download</a></td>
         <td class="name">Ex Gaseous NCore Multipoint Calibration</td>
         <td class="section">QAQC</td>
         <td class="type">xls</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Met_Audit.xls">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Met_Audit.xls">Download</a></td>
         <td class="name">Ex Met Audit</td>
         <td class="section">QAQC</td>
         <td class="type">xls</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Met_QC.xlsx">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Met_QC.xlsx">Download</a></td>
         <td class="name">Ex Met QC</td>
         <td class="section">QAQC</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Ozone_Audit_form.xls">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Ozone_Audit_form.xls">Download</a></td>
         <td class="name">Ex Ozone Audit form</td>
         <td class="section">QAQC</td>
         <td class="type">xls</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_PM25_2025_FR_Maintenance_Calibration_Log.xlsx">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_PM25_2025_FR_Maintenance_Calibration_Log.xlsx">Download</a></td>
         <td class="name">Ex PM25 2025 FR Maintenance Calibration Log</td>
         <td class="section">QAQC</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Sampling_Line_Residence_Calculation.xlsx">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Sampling_Line_Residence_Calculation.xlsx">Download</a></td>
         <td class="name">Ex Sampling Line Residence Calculation</td>
         <td class="section">QAQC</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Temperature_Verification.xlsx">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Temperature_Verification.xlsx">Download</a></td>
         <td class="name">Ex Temperature Verification</td>
         <td class="section">QAQC</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/QAQC/Ex_Zero_Air_Verification.xlsx">Download</a></td>
+        <td ><a href="hosted_files/QAQC/Ex_Zero_Air_Verification.xlsx">Download</a></td>
         <td class="name">Ex Zero Air Verification</td>
         <td class="section">QAQC</td>
         <td class="type">xlsx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Radiation/U-238_&_Th-232_Decay Chain Summary.doc">Download</a></td>
+        <td ><a href="hosted_files/Radiation/U-238_&_Th-232_Decay Chain Summary.doc">Download</a></td>
         <td class="name">U-238 & Th-232 Decay Chain Summary</td>
         <td class="section">Radiation</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Reports/Ex_AQS_DataCertificationPackage.pdf">Download</a></td>
+        <td ><a href="hosted_files/Reports/Ex_AQS_DataCertificationPackage.pdf">Download</a></td>
         <td class="name">Ex AQS DataCertificationPackage</td>
         <td class="section">Reports</td>
         <td class="type">pdf</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Reports/Ex_Report_Cherokee-ITEC_QuarterlyReport.doc">Download</a></td>
+        <td ><a href="hosted_files/Reports/Ex_Report_Cherokee-ITEC_QuarterlyReport.doc">Download</a></td>
         <td class="name">Ex Report Cherokee-ITEC QuarterlyReport</td>
         <td class="section">Reports</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/Site/EPA example of Site Form.doc">Download</a></td>
+        <td ><a href="hosted_files/Site/EPA example of Site Form.doc">Download</a></td>
         <td class="name">EPA example of Site Form</td>
         <td class="section">Site</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_Gravimetric_Laboratory_Filter_Handling_Guide.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_Gravimetric_Laboratory_Filter_Handling_Guide.docx">Download</a></td>
         <td class="name">Ex Gravimetric Laboratory Filter Handling Guide</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_Instrument_Acceptance_Testing-Setup-Operating Guide.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_Instrument_Acceptance_Testing-Setup-Operating Guide.docx">Download</a></td>
         <td class="name">Ex Instrument Acceptance Testing-Setup-Operating Guide</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_Shelter_Temperature_Calibration_Guide.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_Shelter_Temperature_Calibration_Guide.docx">Download</a></td>
         <td class="name">Ex Shelter Temperature Calibration Guide</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_SOP_DataReviewAndDocumentation.doc">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_SOP_DataReviewAndDocumentation.doc">Download</a></td>
         <td class="name">Ex SOP DataReviewAndDocumentation</td>
         <td class="section">SOPs</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_SOP_Independent_Audit_O3_CO_SO2_NO_met.doc">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_SOP_Independent_Audit_O3_CO_SO2_NO_met.doc">Download</a></td>
         <td class="name">Ex SOP Independent Audit O3 CO SO2 NO met</td>
         <td class="section">SOPs</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_SOP_LeadInTotalSuspendedParticulates.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_SOP_LeadInTotalSuspendedParticulates.docx">Download</a></td>
         <td class="name">Ex SOP LeadInTotalSuspendedParticulates</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_SOP_Level_I_Check_NO_NO2_NOx_PM10_PM2.5.doc">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_SOP_Level_I_Check_NO_NO2_NOx_PM10_PM2.5.doc">Download</a></td>
         <td class="name">Ex SOP Level I Check NO NO2 NOx PM10 PM2.5</td>
         <td class="section">SOPs</td>
         <td class="type">doc</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_SOP_Scheduling_AQS_SubmissionOpenNode2.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_SOP_Scheduling_AQS_SubmissionOpenNode2.docx">Download</a></td>
         <td class="name">Ex SOP Scheduling AQS SubmissionOpenNode2</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_Volt_Meter_Verification_Guide.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_Volt_Meter_Verification_Guide.docx">Download</a></td>
         <td class="name">Ex Volt Meter Verification Guide</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
       </tr>
       
       <tr>
-        <td class="download"><a href="hosted_files/SOPs/Ex_Zero_Air_Generator_Verification_Guide.docx">Download</a></td>
+        <td ><a href="hosted_files/SOPs/Ex_Zero_Air_Generator_Verification_Guide.docx">Download</a></td>
         <td class="name">Ex Zero Air Generator Verification Guide</td>
         <td class="section">SOPs</td>
         <td class="type">docx</td>
@@ -378,9 +365,9 @@
   <script src="js/list.js"></script>
   <script>
     var options = {
-    valueNames: [ 'download', 'name', 'section', 'type' ]
+    valueNames: [ 'name', 'section', 'type' ]
     };
 
-    var userList = new List('hosted-files-section', options);
+    var fileList = new List('files', options);
     </script>
 </html>
