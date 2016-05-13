@@ -33,10 +33,12 @@
           <input class="search" placeholder="Search Text" />
           <table>
             <thead>
-              <th class="sort" data-sort="download2">Download</th>
-              <th class="sort" data-sort="name">File Name</th>
-              <th class="sort" data-sort="section">Section</th>
-              <th class="sort" data-sort="type">File Type</th>
+              <tr>
+                <th class="sort" data-sort="download2">Download</th>
+                <th class="sort" data-sort="name">File Name</th>
+                <th class="sort" data-sort="section">Section</th>
+                <th class="sort" data-sort="type">File Type</th>
+              </tr>
             </thead>
             <tbody class="list">
               {% for file in files %}
