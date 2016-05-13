@@ -29,12 +29,12 @@
         <h2 class="h1">
           <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Hosted Files</a>
         </h2>
-        <div id="table-wrapper">
+        <div id="table-wrapper" class="overflow-scroll">
           <input class="search" placeholder="Search Text" />
-          <table>
+          <table class="table-light">
             <thead>
               <tr>
-                <th class="sort" data-sort="download2">Download</th>
+                <th class="sort" data-sort="download2">Download</th></br>
                 <th class="sort" data-sort="name">File Name</th>
                 <th class="sort" data-sort="section">Section</th>
                 <th class="sort" data-sort="type">File Type</th>
