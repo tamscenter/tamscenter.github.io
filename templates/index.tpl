@@ -13,7 +13,6 @@
   <body style="height:3000px">
     <div class="">
       <div class="px3 lg-px4">
-      <!--This is where your title section goes!-->
       <header>
         <div class="flex flex-wrap items-center">
           <div class="">
@@ -26,61 +25,40 @@
             </div>
           </div>
       </header>
-
       <section id="hosted-files" class="py2">
-                <h2 class="h1">
+        <h2 class="h1">
           <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Hosted Files</a>
         </h2>
-<div id="files">
-  <input class="search" placeholder="Search Text" />
-  <!---
-  <button class="sort" data-sort="download">
-    Sort by download
-  </button>
-  <button class="sort" data-sort="name">
-    Sort by name
-  </button>
-  <button class="sort" data-sort="section">
-    Sort by section
-  </button>
-  <button class="sort" data-sort="type">
-    Sort by type
-  </button>
-  --->
-  <table>
-    <!-- IMPORTANT, class="list" have to be at tbody -->
-    <thead>
-      <th >Download Link</th>
-      <th class="sort" data-sort="name">Name</th>
-      <th class="sort" data-sort="section">Section</th>
-      <th class="sort" data-sort="type">Type</th>
-    </thead>
-    <tbody class="list">
-      {% for file in files %}
-      <tr>
-        <td ><a href="{{ file.link }}">Download</a></td>
-        <td class="name">{{ file.name }}</td>
-        <td class="section">{{ file.section }}</td>
-        <td class="type">{{ file.type }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-</div>
-</section>
-
-
+        <div id="table-wrapper">
+          <input class="search" placeholder="Search Text" />
+          <table>
+            <thead>
+              <th class="sort" data-sort="download2">Download</th>
+              <th class="sort" data-sort="name">File Name</th>
+              <th class="sort" data-sort="section">Section</th>
+              <th class="sort" data-sort="type">File Type</th>
+            </thead>
+            <tbody class="list">
+              {% for file in files %}
+              <tr>
+                <td ><a href="{{ file.link }}">Download</a></td>
+                <td class="name">{{ file.name }}</td>
+                <td class="section">{{ file.section }}</td>
+                <td class="type">{{ file.type }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
       </div>
     </div>
   </body>
-  <script src="js/list.js"></script>
-  <script>
+  <script src="js/list.1.1.1.min.js"></script>
+  <script type="text/javascript">
     var options = {
-    valueNames: [ 'name', 'section', 'type' ]
+        valueNames: [ 'download', 'name', 'section', 'type' ]
     };
-
-    var fileList = new List('files', options);
-    </script>
+    var contactList = new List('table-wrapper', options);
+  </script>
 </html>
