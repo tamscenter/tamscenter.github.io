@@ -32,18 +32,31 @@
                 <img src="img/img_idxTabs_tams.png" class="block" alt="TAMS Logo">
               </a>
             </div>
+            <div class="flex flex-wrap items-center mb2">
+              <a href="https://travis-ci.org/basscss/basscss" class="my1"></a>
+            </div>
+            <div>
+              Contact: <a class="atag" href="mailto:Melinda.Ronca-Battista@nau.edu">Melinda.Ronca-Battista@nau.edu</a>
+            </div>
+            <div>
+              <h4>
+                <a href="https://www.youtube.com/c/melindaroncabattista">YouTube Videos</a>
+                </h4>
           </div>
       </header>
       <section id="hosted-files" class="py2">
         <h2 class="h1">
           <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Hosted Files</a>
         </h2>
+        <h2 class="h4">
+          Click on blue headers to sort
+        </h4>
         <div id="table-wrapper" class="overflow-scroll">
           <input class="search" placeholder="Search Text" />
           <table class="table-light">
             <thead>
               <tr>
-                <th class="sort" data-sort="download2">Download</th></br>
+                <th class="sort" style="background-color:white;" data-sort="download2">Download</th></br>
                 <th class="sort" data-sort="name">File Name</th>
                 <th class="sort" data-sort="section">Section</th>
                 <th class="sort" data-sort="type">File Type</th>
