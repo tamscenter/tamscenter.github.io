@@ -66,7 +66,7 @@
             <tbody class="list">
               {% for file in files %}
               <tr>
-                <td ><a href="{{ file.link }}">Download</a></td>
+                <td ><a href="{{ file.link }}" onclick="var that=this;ga('send','event','FileDownload','{{file.name}}');setTimeout(function(){location.href=that.href;},200);return false;">Download</a></td>
                 <td class="name">{{ file.name }}</td>
                 <td class="section">{{ file.section }}</td>
                 <td class="type">{{ file.type }}</td>
