@@ -33,21 +33,22 @@
               </a>
             </div>
             <div class="flex flex-wrap items-center mb2">
-              <a href="https://travis-ci.org/basscss/basscss" class="my1"></a>
+              <a href="http://www7.nau.edu/itep/main/tams/Home/" class="my1">
+                http://www7.nau.edu/itep/main/tams/Home/
+              </a>
             </div>
-            <div>
-              Contact: <a class="atag" href="mailto:Melinda.Ronca-Battista@nau.edu">Melinda.Ronca-Battista@nau.edu</a>
-            </div>
-            <div>
-              <h4>
-                <a href="https://www.youtube.com/c/melindaroncabattista">YouTube Videos</a>
-                </h4>
-          </div>
       </header>
       <section id="hosted-files" class="py2">
-        <h2 class="h1">
-          <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Hosted Files</a>
+        <h2 class="h1" style="margin-top:0;">
+          <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Shareable Resources</a>
         </h2>
+        These files have been generously provided by tribal environmental professionals, states, counties, and the EPA. </br>
+        They represent the experience and generosity of many people, especially the <a href="http://www7.nau.edu/itep/main/tams/SCommittee/SC_members">Tribal Air Monitoring Support Center Steering Committee</a>.</br>
+        Please email us if you have ideas for files to share or files you are looking for.</br>
+        Contact: <a class="atag" href="mailto:Melinda.Ronca-Battista@nau.edu">Melinda.Ronca-Battista@nau.edu</a>
+        <h4>
+          <a href="https://www.youtube.com/c/melindaroncabattista">YouTube Videos</a>
+        </h4>
         <h2 class="h4">
           Click on blue headers to sort
         </h4>
