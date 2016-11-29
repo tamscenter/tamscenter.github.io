@@ -38,6 +38,7 @@ for item in os.listdir('hosted_files'):
                     files.append(base)
 
 info = []
+files = [f for f in files if 'desktop.ini' not in f['link']]
 """
 reference = 'hosted_files/DataManagementLibrary_ORCA_DataEntrySpreadsheet.xlsx'
 xl_workbook = xlrd.open_workbook(reference)
