@@ -9,7 +9,7 @@ import time
 files = []
 
 for item in os.listdir('hosted_files'):
-    print item
+    print(item)
     if '.' in item:
         name, extension = item.rsplit('.', 1)
         base = {
@@ -22,7 +22,7 @@ for item in os.listdir('hosted_files'):
     else:
         try:
             for subitem in os.listdir('hosted_files/' + item):
-                print 'SUBITEM: {}'.format(subitem)
+                print('SUBITEM: {}'.format(subitem))
                 if '.' in subitem:
                     name, extension = subitem.rsplit('.', 1)
                     base = {
@@ -33,7 +33,7 @@ for item in os.listdir('hosted_files'):
                     }
                     files.append(base)
         except Exception as e:
-            print e
+            print(e)
             continue
 
 info = []
