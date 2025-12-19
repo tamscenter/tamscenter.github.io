@@ -2,5 +2,5 @@ desktop.ini
 ~$*
 .DS_Store
 check.txt
-venv
+.venv
 ._*
