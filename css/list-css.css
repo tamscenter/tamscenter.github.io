@@ -1,5 +1,7 @@
-.list {
-  font-family:sans-serif;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue",
+    Arial, sans-serif;
 }
 td {
   padding:10px; 
