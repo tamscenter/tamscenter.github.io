@@ -80,3 +80,22 @@ input:focus {
   white-space: nowrap;
   border: 0;
 }
+
+/* Primary call-to-action button. Visually matches the .sort header palette. */
+.btn-primary {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background-color: #28a8e0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.btn-primary:hover {
+  background-color: #1b8aba;
+  text-decoration: none;
+}
+.btn-primary:focus-visible {
+  outline: 2px solid #1b8aba;
+  outline-offset: 2px;
+}

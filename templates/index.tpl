@@ -5,47 +5,29 @@
     <title>TAMS Center: Data Tools</title>
     <meta name="description" content="Data Tools released by NAU's Tribal Air Monitoring Center">
     <meta name="author" content="TAMS Center">
-    <meta name="keywords" content="native american, air quality monitoring, tribal air monitoring, data tools">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" type="text/css">
     <link href="css/list-css.css" rel="stylesheet">
     <link href="css/basscss.8.0.1.min.css" rel="stylesheet">
   </head>
   <body>
-    <div class="">
-      <div class="px3 lg-px4">
-      <header>
-        <div class="flex flex-wrap items-center">
-          <div class="">
-            <h1 class="m0">TAMS Center Data Tools</h1>
-            <p class="h3 mt1 mb1">Tribal Air Monitoring Tools and Procedures</p>
-            <div class="flex flex-wrap items-center mb2">
-              <a href="http://www7.nau.edu/itep/main/tams/Home/" class="my1">
-                <img src="img/img_idxTabs_tams.png" class="block" alt="TAMS Logo">
-              </a>
-            </div>
-            <div class="flex flex-wrap items-center mb2">
-              <a href="http://www7.nau.edu/itep/main/tams/Home/" class="my1">
-                http://www7.nau.edu/itep/main/tams/Home/
-              </a>
-            </div>
-          </div>
-        </div>
+    <div class="px3 lg-px4">
+      <header class="py3">
+        <h1 class="m0">TAMS Center Data Tools</h1>
+        <p class="h3 mt1 mb2">Tribal Air Monitoring Tools and Procedures</p>
+        <img src="img/img_idxTabs_tams.png" alt="TAMS Center logo" class="block mb2">
+        <a class="btn-primary" href="https://itep.nau.edu/tams/">
+          Visit NAU TAMS Center
+        </a>
       </header>
       <section id="hosted-files" class="py2">
-        <h2 class="h1" style="margin-top:0;">
-          <a href="#hosted-files" style="color:black" class="text-decoration-none hover-underline">Shareable Resources</a>
-        </h2>
+        <h2 class="h1" style="margin-top:0;">Shareable Resources</h2>
         <p>These files have been generously provided by tribal environmental professionals, states, counties, and the EPA.</p>
-        <p>They represent the experience and generosity of many people, especially the <a href="http://www7.nau.edu/itep/main/tams/SCommittee/SC_members">Tribal Air Monitoring Support Center Steering Committee</a>.</p>
+        <p>They represent the experience and generosity of many people, especially the <a href="https://itep.nau.edu/tams/sc-home/">Tribal Air Monitoring Support Center Steering Committee</a>.</p>
         <p>Please email us if you have ideas for files to share or files you are looking for.</p>
-        <p>Contact: <a class="atag" href="mailto:Melinda.Ronca-Battista@nau.edu">Melinda.Ronca-Battista@nau.edu</a></p>
-        <h4>
-          <a href="https://www.youtube.com/c/melindaroncabattista">YouTube Videos</a>
-        </h4>
-        <h2 class="h4">
+        <p class="h4">
           Click on blue headers to sort
-        </h2>
+        </p>
         <div class="p2 my2 border rounded" style="background-color:#f0f7ff; border-color:#cfe2ff;">
           <h3 class="m0">
             <a href="windrose/">Windrose Creation Utility</a>
@@ -81,7 +63,6 @@
           Page last updated: {{ last_updated }}
         </p>
       </section>
-      </div>
     </div>
     <script src="js/list.1.1.1.min.js"></script>
     <script>
