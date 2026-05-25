@@ -3,7 +3,7 @@
     <meta charset="utf-8"></meta>
     <title>TAMS Center: Data Tools</title>
     <meta name="description" content="Data Tools released by NAU's Tribal Air Monitoring Center"></meta>
-    <meta name="author" content="TAMS Center"></meta)
+    <meta name="author" content="TAMS Center">
     <meta name="keywords" content="native american, air quality monitoring, tribal air monitoring, data tools"></meta>
     <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" type="text/css">
@@ -37,6 +37,8 @@
                 http://www7.nau.edu/itep/main/tams/Home/
               </a>
             </div>
+          </div>
+        </div>
       </header>
       <section id="hosted-files" class="py2">
         <h2 class="h1" style="margin-top:0;">
@@ -51,7 +53,7 @@
         </h4>
         <h2 class="h4">
           Click on blue headers to sort
-        </h4>
+        </h2>
         <div class="p2 my2 border rounded" style="background-color:#f0f7ff; border-color:#cfe2ff;">
           <h3 class="m0">
             <a href="windrose/">Windrose Creation Utility</a>
@@ -63,7 +65,7 @@
           <table class="table-light">
             <thead>
               <tr>
-                <th class="sort" style="background-color:white;" data-sort="download2">Download</th></br>
+                <th class="sort" style="background-color:white;" data-sort="download2">Download</th>
                 <th class="sort" data-sort="name">File Name</th>
                 <th class="sort" data-sort="section">Section</th>
                 <th class="sort" data-sort="type">File Type</th>
@@ -84,7 +86,7 @@
         <p class="h6 mt2" style="color:#666;">
           Page last updated: {{ last_updated }}
         </p>
-      </div>
+      </section>
       </div>
     </div>
   </body>

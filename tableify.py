@@ -1,4 +1,5 @@
 import os
+import sys
 from datetime import datetime, timezone
 
 from jinja2 import Template
@@ -18,20 +19,25 @@ for item in os.listdir("hosted_files"):
         files.append(base)
     else:
         try:
-            for subitem in os.listdir("hosted_files/" + item):
-                print("SUBITEM: {}".format(subitem))
-                if "." in subitem:
-                    name, extension = subitem.rsplit(".", 1)
-                    base = {
-                        "name": name.replace("_", " "),
-                        "section": item.replace("_", " "),
-                        "type": extension.replace("_", " "),
-                        "link": "hosted_files/{}/{}".format(item, subitem),
-                    }
-                    files.append(base)
-        except Exception as e:
-            print(e)
+            subitems = os.listdir("hosted_files/" + item)
+        except OSError as e:
+            print(
+                "Skipping subdirectory {!r}: {}".format(item, e),
+                file=sys.stderr,
+            )
             continue
+
+        for subitem in subitems:
+            print("SUBITEM: {}".format(subitem))
+            if "." in subitem:
+                name, extension = subitem.rsplit(".", 1)
+                base = {
+                    "name": name.replace("_", " "),
+                    "section": item.replace("_", " "),
+                    "type": extension.replace("_", " "),
+                    "link": "hosted_files/{}/{}".format(item, subitem),
+                }
+                files.append(base)
 
 info = []
 files = [
