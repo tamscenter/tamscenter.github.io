@@ -6,6 +6,11 @@
     <meta name="description" content="Data Tools released by NAU's Tribal Air Monitoring Center">
     <meta name="author" content="TAMS Center">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#28a8e0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="mstile-270x270.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" type="text/css">
     <link href="css/list-css.css" rel="stylesheet">
     <link href="css/basscss.8.0.1.min.css" rel="stylesheet">
@@ -66,7 +71,7 @@
         </p>
       </section>
     </div>
-    <script src="js/list.1.1.1.min.js"></script>
+    <script src="js/list.2.3.1.min.js"></script>
     <script>
       var options = {
           valueNames: [
