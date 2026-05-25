@@ -9,15 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" type="text/css">
     <link href="css/list-css.css" rel="stylesheet">
     <link href="css/basscss.8.0.1.min.css" rel="stylesheet">
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-77807386-1', 'auto');
-    ga('send', 'pageview');
-    </script>
   </head>
   <body style="height:3000px">
     <div class="">
@@ -76,7 +67,7 @@
             <tbody class="list">
               {% for file in files %}
               <tr>
-                <td ><a href="{{ file.link }}" onclick="var that=this;ga('send','event','FileDownload','{{file.name}}');setTimeout(function(){location.href=that.href;},200);return false;">Download</a></td>
+                <td><a href="{{ file.link }}">Download</a></td>
                 <td class="name">{{ file.name }}</td>
                 <td class="section">{{ file.section }}</td>
                 <td class="type">{{ file.type }}</td>
