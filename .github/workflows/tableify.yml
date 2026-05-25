@@ -33,6 +33,9 @@ jobs:
               uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
               with:
                   persist-credentials: true
+                  # Full history so tableify.py can read per-file commit
+                  # dates via `git log` for the "Modified" column.
+                  fetch-depth: 0
 
             - name: Set up uv
               # astral-sh/setup-uv v8.1.0 (Node.js 24)

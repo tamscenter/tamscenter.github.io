@@ -38,22 +38,24 @@
           <label for="resource-search" class="sr-only">Search resources</label>
           <input id="resource-search" class="search" type="search" placeholder="Search Text" aria-label="Search resources" />
           <table class="table-light">
-            <caption class="sr-only">Shareable resources, sortable by file name, section, or file type.</caption>
+            <caption class="sr-only">Shareable resources, sortable by file name, section, file type, size, or modified date.</caption>
             <thead>
               <tr>
-                <th scope="col" class="sort sort-inactive" data-sort="download2">Download</th>
                 <th scope="col" class="sort" data-sort="name">File Name</th>
                 <th scope="col" class="sort" data-sort="section">Section</th>
                 <th scope="col" class="sort" data-sort="type">File Type</th>
+                <th scope="col" class="sort right-align" data-sort="size">Size</th>
+                <th scope="col" class="sort" data-sort="mtime">Modified</th>
               </tr>
             </thead>
             <tbody class="list">
               {% for file in files %}
               <tr>
-                <td><a href="{{ file.link }}">Download</a></td>
-                <td class="name">{{ file.name }}</td>
+                <td class="name"><a href="{{ file.link }}">{{ file.name }}</a></td>
                 <td class="section">{{ file.section }}</td>
                 <td class="type">{{ file.type }}</td>
+                <td class="size right-align" data-bytes="{{ file.size_bytes }}">{{ file.size_human }}</td>
+                <td class="mtime" data-mtime="{{ file.mtime_iso }}">{{ file.mtime_display }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -67,7 +69,13 @@
     <script src="js/list.1.1.1.min.js"></script>
     <script>
       var options = {
-          valueNames: ['download', 'name', 'section', 'type']
+          valueNames: [
+              'name',
+              'section',
+              'type',
+              { name: 'size',  attr: 'data-bytes' },
+              { name: 'mtime', attr: 'data-mtime' }
+          ]
       };
       var contactList = new List('table-wrapper', options);
     </script>

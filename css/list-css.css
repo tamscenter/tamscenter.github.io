@@ -106,11 +106,6 @@ input:focus {
   border-color: #cfe2ff;
 }
 
-/* Sort-header variant for columns that aren't meaningfully sortable. */
-.sort-inactive {
-  background-color: white;
-}
-
 /* Muted text for de-emphasized metadata (e.g. footer timestamp). */
 .text-muted {
   color: #666;
