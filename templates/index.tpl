@@ -61,14 +61,16 @@
           <p class="m0 mt1">Create a windrose from any Excel file directly in your browser.</p>
         </div>
         <div id="table-wrapper" class="overflow-scroll">
-          <input class="search" placeholder="Search Text" />
+          <label for="resource-search" class="sr-only">Search resources</label>
+          <input id="resource-search" class="search" type="search" placeholder="Search Text" aria-label="Search resources" />
           <table class="table-light">
+            <caption class="sr-only">Shareable resources, sortable by file name, section, or file type.</caption>
             <thead>
               <tr>
-                <th class="sort" style="background-color:white;" data-sort="download2">Download</th>
-                <th class="sort" data-sort="name">File Name</th>
-                <th class="sort" data-sort="section">Section</th>
-                <th class="sort" data-sort="type">File Type</th>
+                <th scope="col" class="sort" style="background-color:white;" data-sort="download2">Download</th>
+                <th scope="col" class="sort" data-sort="name">File Name</th>
+                <th scope="col" class="sort" data-sort="section">Section</th>
+                <th scope="col" class="sort" data-sort="type">File Type</th>
               </tr>
             </thead>
             <tbody class="list">

@@ -10,9 +10,9 @@ Static hosted site for TAMS center file & procedure hosting.
 
 `index.html` is generated automatically by a GitHub Action
 (`.github/workflows/tableify.yml`) that runs `tableify.py` whenever
-`hosted_files/`, `templates/`, `tableify.py`, or `requirements.txt`
-change on `main`. The action commits the regenerated `index.html` back
-to `main`, which is then published by GitHub Pages.
+`hosted_files/`, `templates/`, `tableify.py`, `pyproject.toml`, or
+`uv.lock` change on `main`. The action commits the regenerated
+`index.html` back to `main`, which is then published by GitHub Pages.
 
 Do **not** hand-edit `index.html` — your changes will be overwritten
 the next time the workflow runs.
@@ -28,12 +28,18 @@ via **Run workflow** (`workflow_dispatch`).
 
 ## Running locally
 
+This project uses [uv](https://docs.astral.sh/uv/) for Python and
+dependency management. Install uv once (e.g. `brew install uv` on macOS
+or `curl -LsSf https://astral.sh/uv/install.sh | sh`), then:
+
 ```sh
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python tableify.py
+uv sync
+uv run python tableify.py
 ```
 
+`uv sync` reads `pyproject.toml` and `uv.lock` to create a `.venv`
+with the exact pinned dependencies used in CI. Both `pyproject.toml`
+and `uv.lock` must stay in sync — if you change a dependency, run
+`uv lock` and commit the updated lockfile.
 
 Uses Basscss: http://www.basscss.com/

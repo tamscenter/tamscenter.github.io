@@ -7,7 +7,9 @@ on:
             - "hosted_files/**"
             - "templates/**"
             - "tableify.py"
-            - "requirements.txt"
+            - "pyproject.toml"
+            - "uv.lock"
+            - ".python-version"
             - ".github/workflows/tableify.yml"
     workflow_dispatch:
 
@@ -23,28 +25,27 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              # actions/checkout v4.3.1
-              uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+              # actions/checkout v6.0.2 (Node.js 24)
+              uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
               with:
                   persist-credentials: true
 
-            - name: Set up Python
-              # actions/setup-python v5.6.0
-              uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+            - name: Set up uv
+              # astral-sh/setup-uv v8.1.0 (Node.js 24)
+              uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
               with:
-                  python-version: "3.13"
-                  cache: pip
+                  enable-cache: true
 
-            - name: Install dependencies
-              run: pip install -r requirements.txt
+            - name: Sync dependencies (locked)
+              run: uv sync --locked
 
             - name: Smoke-test tableify.py
               run: |
-                  python -m py_compile tableify.py
-                  python -c "from jinja2 import Template; Template(open('templates/index.tpl').read())"
+                  uv run python -m py_compile tableify.py
+                  uv run python -c "from jinja2 import Template; Template(open('templates/index.tpl').read())"
 
             - name: Run tableify.py
-              run: python tableify.py
+              run: uv run python tableify.py
 
             - name: Verify index.html was produced
               run: test -s index.html

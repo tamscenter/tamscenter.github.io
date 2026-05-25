@@ -3,4 +3,5 @@ desktop.ini
 .DS_Store
 check.txt
 .venv
-._*
+._*__pycache__
+__pycache__

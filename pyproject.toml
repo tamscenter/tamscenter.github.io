@@ -1,0 +1,11 @@
+[project]
+name = "tableify"
+version = "0.1.0"
+description = "Generate index.html for the TAMS Center Data Tools static site."
+requires-python = ">=3.11"
+dependencies = [
+    "jinja2>=3.1",
+]
+
+[tool.uv]
+package = false
