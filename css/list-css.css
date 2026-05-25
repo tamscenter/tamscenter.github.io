@@ -99,3 +99,19 @@ input:focus {
   outline: 2px solid #1b8aba;
   outline-offset: 2px;
 }
+
+/* Tinted callout block used to surface secondary tools (e.g. Windrose). */
+.callout {
+  background-color: #f0f7ff;
+  border-color: #cfe2ff;
+}
+
+/* Sort-header variant for columns that aren't meaningfully sortable. */
+.sort-inactive {
+  background-color: white;
+}
+
+/* Muted text for de-emphasized metadata (e.g. footer timestamp). */
+.text-muted {
+  color: #666;
+}
