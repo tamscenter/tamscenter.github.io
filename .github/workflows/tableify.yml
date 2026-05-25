@@ -16,8 +16,12 @@ on:
 permissions:
     contents: write
 
+# Global mutex: serialize all runs of this workflow across refs so the
+# "regenerate and push" job never races itself. Push-triggered runs only
+# happen on main today, but a workflow_dispatch from a branch would
+# otherwise be able to overlap a push run.
 concurrency:
-    group: tableify-${{ github.ref }}
+    group: tableify
     cancel-in-progress: false
 
 jobs:
