@@ -75,6 +75,9 @@
             </tbody>
           </table>
         </div>
+        <p class="h6 mt2" style="color:#666;">
+          Page last updated: {{ last_updated }}
+        </p>
       </div>
       </div>
     </div>
