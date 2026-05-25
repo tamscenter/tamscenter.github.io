@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timezone
 
 from jinja2 import Template
 
@@ -54,5 +55,7 @@ sheet_names = xl_workbook.sheet_names()
 
 template = Template(open("templates/index.tpl").read())
 
+last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
 with open("index.html", "w+") as f:
-    f.write(template.render(files=files))
+    f.write(template.render(files=files, last_updated=last_updated))
