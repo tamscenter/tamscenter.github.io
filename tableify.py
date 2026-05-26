@@ -22,15 +22,18 @@ def human_size(n):
 
 
 def build_mtime_map():
-    """Map each tracked path under hosted_files/ to the ISO 8601 timestamp
-    of the most recent commit that touched it.
+    """Map each current path under hosted_files/ to the ISO 8601 timestamp
+    of the most recent commit that added or modified its content.
+
+    Follows renames so that moving a file (even without ``git mv``) does not
+    reset its "modified" date. Pure-rename commits (status ``R``) are
+    deliberately ignored; only ``A`` (add) and ``M`` (modify) update the date.
 
     Returns an empty dict if git is unavailable or no history exists for
-    the tree (e.g. running on a CI checkout with fetch-depth 1, or a
-    file that's been added locally but not yet committed)."""
+    the tree."""
     try:
         result = subprocess.run(
-            ["git", "log", "--name-only", "--format=__DATE__%cI", "--", HOSTED_DIR],
+            ["git", "log", "--name-status", "--format=__DATE__%cI", "--", HOSTED_DIR],
             capture_output=True,
             text=True,
             check=False,
@@ -52,14 +55,35 @@ def build_mtime_map():
         )
         return {}
 
-    mtimes = {}
+    # Walk commits newest-first. When we see a rename (R<sim>\told\tnew),
+    # remember that `old` is the historical name of whatever `new` is
+    # currently known as (transitively, through later renames). When we see
+    # an Add or Modify on a path, record this commit's date for the path's
+    # *current* name -- but only on first (newest) occurrence.
+    alias = {}   # past_path -> present_path (after all later renames)
+    mtimes = {}  # present_path -> iso timestamp
     current_iso = None
+
     for line in result.stdout.splitlines():
         if line.startswith("__DATE__"):
             current_iso = line[len("__DATE__"):]
-        elif line and current_iso:
-            # First (most recent) commit touching a path wins.
-            mtimes.setdefault(line, current_iso)
+            continue
+        if not line or current_iso is None:
+            continue
+        parts = line.split("\t")
+        if len(parts) < 2:
+            continue
+        status = parts[0]
+        if status.startswith("R") and len(parts) >= 3:
+            old_path, new_path = parts[1], parts[2]
+            present = alias.get(new_path, new_path)
+            alias[old_path] = present
+        elif status in ("A", "M"):
+            path = parts[1]
+            present = alias.get(path, path)
+            mtimes.setdefault(present, current_iso)
+        # Skip D (deleted), T (type change), U (unmerged), C (copy), etc.
+
     return mtimes
 
 
