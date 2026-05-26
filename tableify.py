@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+from collections import Counter
 from datetime import datetime, timezone
 
 from jinja2 import Template
@@ -131,9 +132,21 @@ files = [
     f for f in files if "desktop.ini" not in f["link"] and "DS_Store" not in f["link"]
 ]
 
+section_counts = Counter(f["section"] for f in files)
+sections = sorted(
+    [{"name": name, "count": count} for name, count in section_counts.items()],
+    key=lambda s: s["name"].lower(),
+)
+
 template = Template(open("templates/index.tpl").read())
 
 last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 with open("index.html", "w+") as f:
-    f.write(template.render(files=files, last_updated=last_updated))
+    f.write(
+        template.render(
+            files=files,
+            sections=sections,
+            last_updated=last_updated,
+        )
+    )

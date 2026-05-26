@@ -46,11 +46,6 @@ jobs:
             - name: Sync dependencies (locked)
               run: uv sync --locked
 
-            - name: Smoke-test tableify.py
-              run: |
-                  uv run python -m py_compile tableify.py
-                  uv run python -c "from jinja2 import Template; Template(open('templates/index.tpl').read())"
-
             - name: Run tableify.py
               run: uv run python tableify.py
 

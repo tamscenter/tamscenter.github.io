@@ -20,15 +20,15 @@
         <h1 class="m0">TAMS Center Data Tools</h1>
         <p class="h3 mt1 mb2">Tribal Air Monitoring Tools and Procedures</p>
         <img src="img/img_idxTabs_tams.png" alt="TAMS Center logo" class="block mb2">
-        <a class="btn-primary" href="https://itep.nau.edu/tams/">
+        <a class="btn-primary" href="https://itep.nau.edu/tams/" target="_blank" rel="noopener noreferrer">
           Visit NAU TAMS Center
+          <span class="sr-only">(opens in a new tab)</span>
         </a>
       </header>
       <section id="hosted-files" class="py2">
         <h2 class="h1 mt0">Shareable Resources</h2>
         <p>These files have been generously provided by tribal environmental professionals, states, counties, and the EPA.</p>
         <p>They represent the experience and generosity of many people, especially the <a href="https://itep.nau.edu/tams/sc-home/">Tribal Air Monitoring Support Center Steering Committee</a>.</p>
-        <p>Please email us if you have ideas for files to share or files you are looking for.</p>
         <p class="h4">
           Click on blue headers to sort
         </p>
@@ -39,6 +39,16 @@
           <p class="m0 mt1">Create a windrose from any Excel file directly in your browser.</p>
         </div>
         <div id="table-wrapper" class="overflow-scroll">
+          <div class="chip-bar" role="group" aria-label="Filter by section">
+            <button type="button" class="chip is-active" data-section="" aria-pressed="true">
+              All <span class="chip-count">{{ files|length }}</span>
+            </button>
+            {% for s in sections %}
+            <button type="button" class="chip" data-section="{{ s.name }}" aria-pressed="false">
+              {{ s.name }} <span class="chip-count">{{ s.count }}</span>
+            </button>
+            {% endfor %}
+          </div>
           <label for="resource-search" class="sr-only">Search resources</label>
           <input id="resource-search" class="search" type="search" placeholder="Search Text" aria-label="Search resources" />
           <table class="table-light">
@@ -82,6 +92,25 @@
           ]
       };
       var contactList = new List('table-wrapper', options);
+
+      document.querySelectorAll('.chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          document.querySelectorAll('.chip').forEach(function (c) {
+            c.classList.remove('is-active');
+            c.setAttribute('aria-pressed', 'false');
+          });
+          chip.classList.add('is-active');
+          chip.setAttribute('aria-pressed', 'true');
+          var section = chip.dataset.section;
+          if (!section) {
+            contactList.filter();
+          } else {
+            contactList.filter(function (item) {
+              return item.values().section === section;
+            });
+          }
+        });
+      });
     </script>
   </body>
 </html>
