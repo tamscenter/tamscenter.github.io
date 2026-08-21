@@ -32,6 +32,9 @@
         <p class="h4">
           Click on blue headers to sort
         </p>
+        {% if new_count %}
+        <p class="h5"><span class="new-badge">New</span> Highlighted rows were added in the past year ({{ new_count }}).</p>
+        {% endif %}
         <div class="callout p2 my2 border rounded">
           <h3 class="m0">
             <a href="windrose/">Windrose Creation Utility</a>
@@ -64,8 +67,8 @@
             </thead>
             <tbody class="list">
               {% for file in files %}
-              <tr>
-                <td class="name"><a href="{{ file.link }}">{{ file.name }}</a></td>
+              <tr{% if file.is_new %} class="is-new"{% endif %}>
+                <td><span class="name"><a href="{{ file.link }}">{{ file.name }}</a></span>{% if file.is_new %} <span class="new-badge">New</span>{% endif %}</td>
                 <td class="section">{{ file.section }}</td>
                 <td class="type">{{ file.type }}</td>
                 <td class="size right-align" data-bytes="{{ file.size_bytes }}">{{ file.size_human }}</td>
