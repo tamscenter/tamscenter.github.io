@@ -2,14 +2,11 @@ import os
 import subprocess
 import sys
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from jinja2 import Template
 
 HOSTED_DIR = "hosted_files"
-
-# Files added within this window are highlighted as new in the table.
-NEW_WINDOW = timedelta(days=365)
 
 
 def human_size(n):
@@ -24,20 +21,15 @@ def human_size(n):
     return "{:.1f} PB".format(size / 1024)
 
 
-def build_date_maps():
-    """Map each current path under hosted_files/ to two ISO 8601 timestamps:
-    when it was last modified, and when it was first added.
+def build_mtime_map():
+    """Map each current path under hosted_files/ to the ISO 8601 timestamp
+    of the most recent commit that added or modified its content.
 
-    Returns ``(mtimes, ctimes)`` where ``mtimes[path]`` is the date of the most
-    recent commit that added or modified the file's content and
-    ``ctimes[path]`` is the date of the oldest commit that added it.
+    Follows renames so that moving a file (even without ``git mv``) does not
+    reset its "modified" date. Pure-rename commits (status ``R``) are
+    deliberately ignored; only ``A`` (add) and ``M`` (modify) update the date.
 
-    Follows renames so that moving a file (even without ``git mv``) resets
-    neither date. Pure-rename commits (status ``R``) are deliberately ignored;
-    only ``A`` (add) and ``M`` (modify) update the modified date, and only
-    ``A`` updates the added date.
-
-    Returns empty dicts if git is unavailable or no history exists for
+    Returns an empty dict if git is unavailable or no history exists for
     the tree."""
     try:
         result = subprocess.run(
@@ -49,10 +41,10 @@ def build_date_maps():
         )
     except (OSError, subprocess.TimeoutExpired) as e:
         print(
-            "git log unavailable, date data will be blank: {}".format(e),
+            "git log unavailable, mtime data will be blank: {}".format(e),
             file=sys.stderr,
         )
-        return {}, {}
+        return {}
 
     if result.returncode != 0:
         print(
@@ -61,7 +53,7 @@ def build_date_maps():
             ),
             file=sys.stderr,
         )
-        return {}, {}
+        return {}
 
     # Walk commits newest-first. When we see a rename (R<sim>\told\tnew),
     # remember that `old` is the historical name of whatever `new` is
@@ -69,8 +61,7 @@ def build_date_maps():
     # an Add or Modify on a path, record this commit's date for the path's
     # *current* name -- but only on first (newest) occurrence.
     alias = {}   # past_path -> present_path (after all later renames)
-    mtimes = {}  # present_path -> iso timestamp of newest add/modify
-    ctimes = {}  # present_path -> iso timestamp of oldest add
+    mtimes = {}  # present_path -> iso timestamp
     current_iso = None
 
     for line in result.stdout.splitlines():
@@ -91,13 +82,9 @@ def build_date_maps():
             path = parts[1]
             present = alias.get(path, path)
             mtimes.setdefault(present, current_iso)
-            if status == "A":
-                # Overwrite: walking newest-first, the last add we see is the
-                # oldest one, i.e. when the file first appeared.
-                ctimes[present] = current_iso
         # Skip D (deleted), T (type change), U (unmerged), C (copy), etc.
 
-    return mtimes, ctimes
+    return mtimes
 
 
 def normalize_mtime(iso):
@@ -115,21 +102,8 @@ def normalize_mtime(iso):
     return dt.isoformat(), dt.strftime("%b %Y")
 
 
-def is_recent(iso, now):
-    """True if a git %cI timestamp falls within NEW_WINDOW of ``now``.
-
-    Unknown or unparseable timestamps are not recent."""
-    if not iso:
-        return False
-    try:
-        dt = datetime.fromisoformat(iso).astimezone(timezone.utc)
-    except ValueError:
-        return False
-    return now - dt <= NEW_WINDOW
-
-
-def annotate(base, mtime_map, ctime_map, now):
-    """Add size and git-date metadata to a file dict (in place)."""
+def annotate(base, mtime_map):
+    """Add size and git-mtime metadata to a file dict (in place)."""
     try:
         size_bytes = os.path.getsize(base["link"])
     except OSError:
@@ -139,12 +113,10 @@ def annotate(base, mtime_map, ctime_map, now):
     base["size_human"] = human_size(size_bytes)
     base["mtime_iso"] = mtime_iso
     base["mtime_display"] = mtime_display
-    base["is_new"] = is_recent(ctime_map.get(base["link"]), now)
     return base
 
 
-now = datetime.now(timezone.utc)
-mtime_map, ctime_map = build_date_maps()
+mtime_map = build_mtime_map()
 files = []
 
 for item in os.listdir(HOSTED_DIR):
@@ -157,7 +129,7 @@ for item in os.listdir(HOSTED_DIR):
             "type": extension.replace("_", " "),
             "link": "hosted_files/{}".format(item),
         }
-        files.append(annotate(base, mtime_map, ctime_map, now))
+        files.append(annotate(base, mtime_map))
     else:
         try:
             subitems = os.listdir("hosted_files/" + item)
@@ -178,7 +150,7 @@ for item in os.listdir(HOSTED_DIR):
                     "type": extension.replace("_", " "),
                     "link": "hosted_files/{}/{}".format(item, subitem),
                 }
-                files.append(annotate(base, mtime_map, ctime_map, now))
+                files.append(annotate(base, mtime_map))
 
 files = [
     f for f in files if "desktop.ini" not in f["link"] and "DS_Store" not in f["link"]
@@ -192,8 +164,7 @@ sections = sorted(
 
 template = Template(open("templates/index.tpl").read())
 
-last_updated = now.strftime("%Y-%m-%d %H:%M UTC")
-new_count = sum(1 for f in files if f["is_new"])
+last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 with open("index.html", "w+") as f:
     f.write(
@@ -201,6 +172,5 @@ with open("index.html", "w+") as f:
             files=files,
             sections=sections,
             last_updated=last_updated,
-            new_count=new_count,
         )
     )
